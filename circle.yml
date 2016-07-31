@@ -4,12 +4,12 @@ machine:
 
 dependencies:
   override:
-	- docker build -t jasonwitting/simple-go-http .
+    - docker build -t jasonwitting/simple-go-http .
 
 test:
   override:
-	- docker run -d -p 8081:8081 -e "PORT=8081" jasonwitting/simple-go-http; sleep 10
-	- --retry 10 --retry-delay 5 -v http://localhost:8081
+    - docker run -d -p 8081:8081 -e "PORT=8081" jasonwitting/simple-go-http; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8081
 
 deployment:
   hub:
