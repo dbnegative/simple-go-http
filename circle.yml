@@ -15,10 +15,8 @@ dependencies:
     - echo $ACCT_AUTH | base64 --decode -i > ${HOME}/account-auth.json
     - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/account-auth.json
     - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_NAME
-    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set container/cluster $CLUSTER_NAME
     # Reading the zone from the env var is not working so we set it here
     - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
-    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CLUSTER_NAME
     - docker build -t jasonwitting/simple-go-http:$CIRCLE_SHA1 .
     # Using a separate tag command until Docker 1.10 is available on CircleCI, then we can use two tags in the build command above
     - docker tag jasonwitting/simple-go-http:$CIRCLE_SHA1 jasonwitting/simple-go-http:latest
