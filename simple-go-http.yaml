@@ -14,3 +14,6 @@ spec:
         image: jasonwitting/simple-go-http:latest
         ports:
         - containerPort: 8081
+        env:
+        - name: PORT
+          value: "8081"
