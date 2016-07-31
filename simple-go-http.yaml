@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: simple-go-http
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: simple-go-http
+    spec:
+      containers:
+      - name: subsonic
+        image: jasonwitting/simple-go-http:latest
+        ports:
+        - containerPort: 8081
